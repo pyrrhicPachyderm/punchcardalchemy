@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+
+<meta charset="UTF-8">
+
+<script type="text/javascript" src="drawCard.js" ></script>
+<script type="text/javascript" src="drawStack.js" ></script>
+<script type="text/javascript" src="alchemy.js" ></script>
+<script type="text/javascript" src="colours.js" ></script>
+<script type="text/javascript" src="image.js" ></script>
+
+<html>
+	<body style="background-color: rgb(255, 230, 205);">
+		<canvas id="workspace" width="323" height="410"></canvas>
+		<button type="button" id="addStack" onclick="addStack()">Add current card to stack.<br>---></button>
+		<canvas id="stack" width="323" height="410"></canvas>
+		
+		<br>
+		
+		<form id="colourForm">
+			Card colour: <input type="color" name="cardColour" value="#B8860B" onchange="unsetColours()"><br>
+			Text colour: <input type="color" name="textColour" value="#96FF00" onchange="unsetColours()"><br>
+			Dot colour: <input type="color" name="dotColour" value="#E05E0B" onchange="unsetColours()"><br>
+			Light dot colour: <input type="color" name="lightDotColour" value="#B88633" onchange="unsetColours()"><br>
+			<br>
+			Presets: <select id="presetColours" size="1" onchange="setColours()">
+				<option>Rashin Sihiri</option>
+				<option>Eudrew Curtow</option>
+			</select>
+		</form>
+		
+		<br><br>
+		
+		<form id="codeForm" action="javascript:punchCard();">
+			Captchalogue code: <input type="text" name="code" value="00000000" maxlength="8" size="8"><br>
+			<input type="submit" value="Punch"><br>
+		</form>
+		Workspace captchalogue code: <span id="workspaceCode"></span><br>
+		Stack captchalogue code: <span id="stackCode"></span>
+		
+		<br><br>
+		
+		<form id="imageForm" action="javascript:loadImage();" method="POST" enctype="multipart/form-data">
+			Image: <input type="file" name="image"><br>
+			<input type="submit" value="Load"><br>
+			<small>Note: The top right of the image may need removing (turning transparent) in order to have it fit properly on the card.</small><br>
+		</form>
+		
+		<script>
+			var workspace = document.getElementById('workspace');
+			var context = workspace.getContext('2d');
+			
+			var stack = document.getElementById('stack');
+			var stackContext = stack.getContext('2d');
+			
+			var colourForm = document.getElementById("colourForm");
+			var codeForm = document.getElementById("codeForm");
+			var imageForm = document.getElementById("imageForm");
+			
+			var workspaceCode = document.getElementById("workspaceCode");
+			var stackCode = document.getElementById("stackCode");
+			
+			resetWorkspace();
+			
+			
+			/*context.fillStyle = 'white';
+			context.fillRect(0, 0, canvas.width, canvas.height);*/
+			
+			setInterval(drawWorkspace, 50);
+			function drawWorkspace(){
+				drawCard(0, 0, IMAGE, false, CODE);
+			}
+			
+			//cardImage = new Image();
+			//cardImage.onload = function(e){
+				//drawCard(0, 0, cardImage, false, '6Bomb!?');
+				
+				
+				/*gif
+				var encoder = new GIFEncoder();
+				//encoder.setRepeat(0); //0 -> loop forever //1+ -> loop n times then stop
+				//encoder.setDelay(500); //go to next frame every n milliseconds
+				encoder.start();
+				encoder.addFrame(context);
+				encoder.finish();
+				var binaryGif = encoder.stream().getData() //notice this is different from the as3gif package!
+				var dataURL = 'data:image/gif;base64,' + encode64(binaryGif);
+				document.getElementById('canvasImg').src = dataURL;
+				//*/
+			//};
+			
+			//cardImage.src = "Items/Bomb.png";
+			
+			
+			
+			//console.log("bombImage.onload: " + bombImage.onload);
+			//drawCard(0, 0, bombImage, false);
+			
+		</script>
+	</body>
+</html>
