@@ -93,5 +93,10 @@ function setColours(){
 		colourForm.elements[1].value = "#FFC050";
 		colourForm.elements[2].value = "#005B75";
 		colourForm.elements[3].value = "#0062FF";
+	} else if(preset == "Izek Herzog"){
+		colourForm.elements[0].value = "#2E8B5B";
+		colourForm.elements[1].value = "#C0C0C0";
+		colourForm.elements[2].value = "#1E5B3C";
+		colourForm.elements[3].value = "#36A369";
 	}
 }
