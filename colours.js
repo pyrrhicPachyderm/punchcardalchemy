@@ -1,3 +1,7 @@
+
+var DEFAULT_PRESETS = {"Rashin Sihiri":"#B8860B#96FF00#E05E0B#B88633", "Eudrew Curtow":"#0062FF#FFC050#005B75#0062FF", "Izek Herzog":"#2E8B5B#C0C0C0#1E5B3C#36A369", "Eden Lucius":"#20305C#C0A150#202040#1E5B3C"};
+var PRESETS;
+
 /*var CARD_RED = 184;
 var CARD_GREEN = 134;
 var CARD_BLUE = 11;
@@ -83,7 +87,14 @@ function unsetColours(){
 function setColours(){
 	var preset = colourForm.elements[4].value;
 	
-	if(preset == "Rashin Sihiri"){
+	var colourString = PRESETS[preset];
+	
+	colourForm.elements[0].value = colourString.substring(0, 7);
+	colourForm.elements[1].value = colourString.substring(7, 14);
+	colourForm.elements[2].value = colourString.substring(14, 21);
+	colourForm.elements[3].value = colourString.substring(21, 28);
+	
+	/*if(preset == "Rashin Sihiri"){
 		colourForm.elements[0].value = "#B8860B";
 		colourForm.elements[1].value = "#96FF00";
 		colourForm.elements[2].value = "#E05E0B";
@@ -103,5 +114,5 @@ function setColours(){
 		colourForm.elements[1].value = "#C0A150";
 		colourForm.elements[2].value = "#202040";
 		colourForm.elements[3].value = "#1E5B3C";
-	}
+	}*/
 }
