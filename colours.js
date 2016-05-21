@@ -98,5 +98,10 @@ function setColours(){
 		colourForm.elements[1].value = "#C0C0C0";
 		colourForm.elements[2].value = "#1E5B3C";
 		colourForm.elements[3].value = "#36A369";
+	} else if(preset == "Eden Lucius"){
+		colourForm.elements[0].value = "#20305C";
+		colourForm.elements[1].value = "#C0A150";
+		colourForm.elements[2].value = "#202040";
+		colourForm.elements[3].value = "#1E5B3C";
 	}
 }
