@@ -1,6 +1,7 @@
 var IMAGE = new Image();
 
 function loadImage(formIndex){
+	console.log(imageForm.elements[formIndex]);
 	var file = imageForm.elements[formIndex].files[0];
 	var reader = new FileReader();
 	
