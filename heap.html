@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+
+<meta charset="UTF-8">
+
+<script type="text/javascript" src="drawCard.js" ></script>
+<script type="text/javascript" src="colours.js" ></script>
+<script type="text/javascript" src="heap.js" ></script>
+<script type="text/javascript" src="image.js" ></script>
+<script type="text/javascript" src="cookies.js" ></script>
+<script type="text/javascript" src="alchemy.js" ></script>
+
+<script type="text/javascript" src="jsgif/LZWEncoder.js"></script>
+<script type="text/javascript" src="jsgif/NeuQuant.js"></script>
+<script type="text/javascript" src="jsgif/GIFEncoder.js"></script>
+<script type="text/javascript" src="jsgif/b64.js"></script>
+
+<html>
+	<body>
+		<canvas id="Sylladex" width="2000" height="1200"></canvas>
+		<img id="canvasImg" alt="Right click to save.">
+		
+		<br>
+		
+		<form id="colourForm">
+			Card colour: <input type="color" name="cardColour" value="#B8860B" onchange="unsetColours()"><br>
+			Text colour: <input type="color" name="textColour" value="#96FF00" onchange="unsetColours()"><br>
+			Dot colour: <input type="color" name="dotColour" value="#E05E0B" onchange="unsetColours()"><br>
+			Light dot colour: <input type="color" name="lightDotColour" value="#B88633" onchange="unsetColours()"><br>
+			<br>
+			Presets: <select id="presetColours" size="1" onchange="setColours()"></select><br><br>
+			<input type="button" id="saveColours" value="Save current colours as preset (uses cookies)" onclick="savePreset()"><br>
+			Preset Name: <input type="text" name="presetName"><br><br>
+			
+			<input type="button" id="deleteColours" value="Delete current preset" onclick="deletePreset()"><br>
+		</form>
+		
+		<br><br>
+		
+		<form id="numberForm">
+			Number of captchalogue cards: <input type="number" name="cardNumber" min="0" onchange="updateCardNumber()"><br>
+			Number of captchalogued items: <input type="number" name="itemNumber" min="0" onchange="updateItemNumber()"><br>
+		</form>
+		
+		<br>
+		
+		<form id="imageForm" method="POST" enctype="multipart/form-data">
+			<input type="text" onchange="readHeap()">
+			<input type="file" onchange="readHeap()"><br>
+		</form>
+		
+		<br><br>
+		
+		<input type="button" id="renderHeap" value="Draw Sylladex" onclick="drawHeap()"><br>
+		
+		<br><br>
+		
+		<form id="editForm">
+			<input type="text" onchange="loadInsert(1)">
+			<input type="file" onchange="loadInsert(1)"><br>
+			<input type="button" id="insertItem" value="Insert item" onclick="insertCurrent()"><br><br>
+			<input type="button" id="extractItem" value="Extract item" onclick="extract()"><br>
+		</form>
+		
+		
+		<script>
+			var canvas = document.getElementById('Sylladex');
+			var context = canvas.getContext('2d');
+			
+			var colourForm = document.getElementById("colourForm");
+			initPresets();
+			
+			var numberForm = document.getElementById("numberForm");
+			var imageForm = document.getElementById("imageForm");
+			
+			updateCardNumber();
+			updateItemNumber();
+			
+			var editForm = document.getElementById("editForm");
+			
+			
+			//drawCard(0, 0, "Items/Bomb.png", false, true, '');
+			
+			//94 * 118
+			//41 * 31
+			//41 * 32
+			//42 * 34
+			//34 * 31
+			
+			/*var knife = new Image();
+			knife.onload = function(){
+				console.log("Loaded");
+			}
+			knife.src = "Items/Knife.png";
+			
+			insert({name:"Knife", image:knife}, false);
+			//drawHeap();
+			insert({name:"Dynamite", image:"Items/Dynamite.png"}, false);
+			//drawHeap();
+			insert({name:"Pogo", image:"Items/Pogo.png"}, false);
+			//drawHeap();
+			insert({name:"Bomb", image:"Items/Bomb.png"}, true);
+			//drawHeap();
+			extract();
+			drawHeap();*/
+			
+			
+			/*gif
+			var encoder = new GIFEncoder();
+			encoder.setRepeat(0); //0 -> loop forever //1+ -> loop n times then stop
+			encoder.setDelay(500); //go to next frame every n milliseconds
+			encoder.start();
+			encoder.addFrame(context);
+			encoder.finish();
+			var binaryGif = encoder.stream().getData() //notice this is different from the as3gif package!
+			var dataURL = 'data:image/gif;base64,' + encode64(binaryGif);
+			document.getElementById('canvasImg').src = dataURL;
+			//*/
+			
+			
+		</script>
+	</body>
+</html>

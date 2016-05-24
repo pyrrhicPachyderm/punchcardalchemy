@@ -19,9 +19,9 @@ function drawHole(x, y, x1, y1){
 	clearRect(x, y, x1+2, y1+2, x1+33, y1+9);
 };
 
-function drawCard(x, y, item, itemOnly, code){
+function drawCard(x, y, item, itemOnly, drawText, code){
 	
-	//console.log("Drawing card.");
+	//console.log("Drawing card. item.src = " + item.src);
 	
 	if(!itemOnly){
 		context.fillStyle = cardColour();
@@ -107,87 +107,90 @@ function drawCard(x, y, item, itemOnly, code){
 		drawRect(x, y, 161, 41, 166, 44);
 		drawRect(x, y, 161, 39, 163, 41);
 		
-		context.fillStyle = textColour();
 		
-		//x1
-		
-		//x
-		drawRect(x, y, 37, 377, 41, 381);
-		drawRect(x, y, 46, 377, 50, 381);
-		drawRect(x, y, 41, 381, 46, 392);
-		drawRect(x, y, 37, 392, 41, 397);
-		drawRect(x, y, 46, 392, 50, 397);
-		
-		//1
-		drawRect(x, y, 61, 368, 65, 392);
-		drawRect(x, y, 57, 373, 61, 377);
-		drawRect(x, y, 57, 392, 72, 397);
-		
-		//captchalogue
-		
-		//c
-		drawRect(x, y, 279, 338, 283, 349);
-		drawRect(x, y, 283, 349, 292, 353);
-		drawRect(x, y, 292, 338, 296, 349);
-		
-		//a
-		drawRect(x, y, 279, 325, 283, 333);
-		drawRect(x, y, 283, 320, 288, 325);
-		drawRect(x, y, 288, 320, 296, 333);
-		
-		//p
-		drawRect(x, y, 279, 312, 301, 316); //long bottom
-		drawRect(x, y, 279, 305, 283, 312); //left
-		drawRect(x, y, 283, 301, 292, 305); //top
-		drawRect(x, y, 292, 305, 296, 312); //right
-		
-		//t
-		drawRect(x, y, 275, 288, 292, 292);
-		drawRect(x, y, 279, 283, 283, 296);
-		drawRect(x, y, 292, 283, 296, 288);
-		
-		//c
-		drawRect(x, y, 279, 264, 283, 272);
-		drawRect(x, y, 283, 272, 292, 277);
-		drawRect(x, y, 292, 264, 296, 272);
-		
-		//h
-		drawRect(x, y, 268, 255, 296, 259);
-		drawRect(x, y, 279, 251, 283, 255);
-		drawRect(x, y, 283, 244, 295, 251);
-		
-		//a
-		drawRect(x, y, 279, 231, 283, 240);
-		drawRect(x, y, 283, 227, 288, 231);
-		drawRect(x, y, 288, 227, 296, 240);
-		
-		//l
-		drawRect(x, y, 268, 216, 275, 222);
-		drawRect(x, y, 268, 211, 296, 216);
-		
-		//o
-		drawRect(x, y, 283, 198, 292, 203);
-		drawRect(x, y, 279, 194, 283, 198);
-		drawRect(x, y, 292, 194, 296, 198);
-		drawRect(x, y, 283, 187, 292, 194);
-		
-		//g
-		drawRect(x, y, 279, 170, 283, 179);
-		drawRect(x, y, 283, 170, 296, 174);
-		drawRect(x, y, 288, 174, 292, 179);
-		drawRect(x, y, 283, 179, 292, 183);
-		drawRect(x, y, 296, 174, 301, 183);
-		
-		//u
-		drawRect(x, y, 279, 150, 296, 155);
-		drawRect(x, y, 292, 155, 296, 161);
-		drawRect(x, y, 279, 161, 292, 166);
-		
-		//e
-		drawRect(x, y, 279, 137, 283, 142);
-		drawRect(x, y, 283, 133, 288, 146);
-		drawRect(x, y, 288, 142, 292, 146);
-		drawRect(x, y, 292, 133, 296, 142);
+		if(drawText){
+			context.fillStyle = textColour();
+			
+			//x1
+			
+			//x
+			drawRect(x, y, 37, 377, 41, 381);
+			drawRect(x, y, 46, 377, 50, 381);
+			drawRect(x, y, 41, 381, 46, 392);
+			drawRect(x, y, 37, 392, 41, 397);
+			drawRect(x, y, 46, 392, 50, 397);
+			
+			//1
+			drawRect(x, y, 61, 368, 65, 392);
+			drawRect(x, y, 57, 373, 61, 377);
+			drawRect(x, y, 57, 392, 72, 397);
+			
+			//captchalogue
+			
+			//c
+			drawRect(x, y, 279, 338, 283, 349);
+			drawRect(x, y, 283, 349, 292, 353);
+			drawRect(x, y, 292, 338, 296, 349);
+			
+			//a
+			drawRect(x, y, 279, 325, 283, 333);
+			drawRect(x, y, 283, 320, 288, 325);
+			drawRect(x, y, 288, 320, 296, 333);
+			
+			//p
+			drawRect(x, y, 279, 312, 301, 316); //long bottom
+			drawRect(x, y, 279, 305, 283, 312); //left
+			drawRect(x, y, 283, 301, 292, 305); //top
+			drawRect(x, y, 292, 305, 296, 312); //right
+			
+			//t
+			drawRect(x, y, 275, 288, 292, 292);
+			drawRect(x, y, 279, 283, 283, 296);
+			drawRect(x, y, 292, 283, 296, 288);
+			
+			//c
+			drawRect(x, y, 279, 264, 283, 272);
+			drawRect(x, y, 283, 272, 292, 277);
+			drawRect(x, y, 292, 264, 296, 272);
+			
+			//h
+			drawRect(x, y, 268, 255, 296, 259);
+			drawRect(x, y, 279, 251, 283, 255);
+			drawRect(x, y, 283, 244, 295, 251);
+			
+			//a
+			drawRect(x, y, 279, 231, 283, 240);
+			drawRect(x, y, 283, 227, 288, 231);
+			drawRect(x, y, 288, 227, 296, 240);
+			
+			//l
+			drawRect(x, y, 268, 216, 275, 222);
+			drawRect(x, y, 268, 211, 296, 216);
+			
+			//o
+			drawRect(x, y, 283, 198, 292, 203);
+			drawRect(x, y, 279, 194, 283, 198);
+			drawRect(x, y, 292, 194, 296, 198);
+			drawRect(x, y, 283, 187, 292, 194);
+			
+			//g
+			drawRect(x, y, 279, 170, 283, 179);
+			drawRect(x, y, 283, 170, 296, 174);
+			drawRect(x, y, 288, 174, 292, 179);
+			drawRect(x, y, 283, 179, 292, 183);
+			drawRect(x, y, 296, 174, 301, 183);
+			
+			//u
+			drawRect(x, y, 279, 150, 296, 155);
+			drawRect(x, y, 292, 155, 296, 161);
+			drawRect(x, y, 279, 161, 292, 166);
+			
+			//e
+			drawRect(x, y, 279, 137, 283, 142);
+			drawRect(x, y, 283, 133, 288, 146);
+			drawRect(x, y, 288, 142, 292, 146);
+			drawRect(x, y, 292, 133, 296, 142);
+		}
 	}
 	
 	/*try {*/

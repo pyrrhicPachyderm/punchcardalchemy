@@ -10,7 +10,7 @@ function eraseCookie(name) {
 }
 
 function initPresets() {
-	console.log(document.cookie);
+	//console.log(document.cookie);
 	
 	PRESETS = {};
 	for(var name in DEFAULT_PRESETS){
@@ -31,11 +31,11 @@ function initPresets() {
 	
 	colourForm.elements[4].innerHTML = "";
 	for(var name in PRESETS){
-		console.log(name);
+		//console.log(name);
 		colourForm.elements[4].innerHTML += ("<option>" + name + "</option>");
 	}
 	
-	console.log(colourForm.elements[4].innerHTML);
+	//console.log(colourForm.elements[4].innerHTML);
 }
 
 function savePreset() {
